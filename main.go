@@ -7,24 +7,22 @@ import (
 	"github.com/gorilla/mux"
 )
 
-const PORT = ":8080"
+const (
+	// PORT is the port that the server will run on
+	PORT = ":8080"
+	// VERSION is the version of the API
+	VERSION = "v1"
+)
 
-func HomeHandler(w http.ResponseWriter, r *http.Request) {
-	// Write Static HTML File
-	http.ServeFile(w, r, "cmd/static/index.html")
-}
-
-// EntryPoint Of Our App
 func main() {
-	// Create a new router
+	// Create Mux Router and Initialize Routes
 	r := mux.NewRouter()
+	// Initialize Routes
+	r.HandleFunc("/api/"+VERSION, func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("Welcome to My API"))
+	}).Methods(http.MethodGet)
 
-	// Define a route
-	r.HandleFunc("/", HomeHandler)
-
-	// Log that the server is running
-	log.Println("Server is running on port", PORT)
-
-	// Start the server
-	http.ListenAndServe(PORT, r)
+	log.Printf("Starting Server on Port %s", PORT)
+	// Start Server
+	log.Fatal(http.ListenAndServe(PORT, r))
 }

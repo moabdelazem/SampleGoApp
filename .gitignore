@@ -2,8 +2,8 @@
 # https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
 #
 
-# Temporary files
-tmp/
+# Binaries for programs and plugins
+bin/
 
 # Binaries for programs and plugins
 *.exe
@@ -19,7 +19,7 @@ tmp/
 *.out
 
 # Dependency directories (remove the comment below to include it)
-# vendor/
+vendor/
 
 # Go workspace file
 go.work
