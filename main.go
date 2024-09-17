@@ -14,6 +14,11 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "static/index.html")
 }
 
+func AboutHandler(w http.ResponseWriter, r *http.Request) {
+	// Write Static HTML File
+	http.ServeFile(w, r, "static/about.html")
+}
+
 // EntryPoint Of Our App
 func main() {
 	// Create a new router
@@ -21,6 +26,7 @@ func main() {
 
 	// Define a route
 	r.HandleFunc("/", HomeHandler)
+	r.HandleFunc("/about", AboutHandler)
 
 	// Log that the server is running
 	log.Println("Server is running on port", PORT)
