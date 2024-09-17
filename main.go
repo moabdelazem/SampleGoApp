@@ -9,15 +9,18 @@ import (
 
 const PORT = ":8080"
 
+func HomeHandler(w http.ResponseWriter, r *http.Request) {
+	// Write Static HTML File
+	http.ServeFile(w, r, "static/index.html")
+}
+
 // EntryPoint Of Our App
 func main() {
 	// Create a new router
 	r := mux.NewRouter()
 
 	// Define a route
-	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Hello World"))
-	})
+	r.HandleFunc("/", HomeHandler)
 
 	// Log that the server is running
 	log.Println("Server is running on port", PORT)
