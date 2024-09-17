@@ -11,12 +11,7 @@ const PORT = ":8080"
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	// Write Static HTML File
-	http.ServeFile(w, r, "static/index.html")
-}
-
-func AboutHandler(w http.ResponseWriter, r *http.Request) {
-	// Write Static HTML File
-	http.ServeFile(w, r, "static/about.html")
+	http.ServeFile(w, r, "cmd/static/index.html")
 }
 
 // EntryPoint Of Our App
@@ -26,7 +21,6 @@ func main() {
 
 	// Define a route
 	r.HandleFunc("/", HomeHandler)
-	r.HandleFunc("/about", AboutHandler)
 
 	// Log that the server is running
 	log.Println("Server is running on port", PORT)
